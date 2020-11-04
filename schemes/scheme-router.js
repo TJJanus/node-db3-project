@@ -1,5 +1,5 @@
 const express = require('express');
-
+const db = require('../data/db-config');
 const Schemes = require('./scheme-model.js');
 
 const router = express.Router();
@@ -94,7 +94,7 @@ router.put('/:id', (req, res) => {
       res.json(updatedScheme);
     })
     .catch(err => {
-      res.status(500).json({ message: 'Failed to update scheme' });
+      res.status(500).json({ error: err.message });
     });
 });
 
